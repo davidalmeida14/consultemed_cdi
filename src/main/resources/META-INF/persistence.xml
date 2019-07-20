@@ -11,16 +11,16 @@
         
         <properties>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/acme"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/acme?createDataBaseIfNotExists=true"/>
             <property name="hibernate.connection.username" value="root"/>
-            <property name="hibernate.connection.password" value="root"/>
+            <property name="hibernate.connection.password" value="12345"/>
             
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
             <property name="hibernate.connection.useUnicode" value="true"/>
             <property name="hibernate.connection.characterEncoding" value="UTF-8"/>
             <property name="hibernate.current_session_context_class" value="thread"/>
             <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.hbm2dll.auto" value="update" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
             
         </properties>
     </persistence-unit>

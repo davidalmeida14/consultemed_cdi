@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.consultemed.model.Usuario;
 import br.com.consultemed.service.ContatoBusiness;
+import br.com.consultemed.service.MedicoBusiness;
 import br.com.consultemed.service.UsuarioBusiness;
 import br.com.consultemed.utils.Constantes;
 import br.com.consultemed.utils.Criptografia;
@@ -27,10 +28,12 @@ public class LoginController extends HttpServlet {
 
 	private UsuarioBusiness usuarioBusiness;
 	private ContatoBusiness contatoBusiness;
+	private MedicoBusiness medicoBusiness;
 
 	public LoginController() {
 		this.contatoBusiness = new ContatoBusiness();
 		this.usuarioBusiness = new UsuarioBusiness();
+		this.medicoBusiness = new MedicoBusiness();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -69,6 +72,7 @@ public class LoginController extends HttpServlet {
             	if(user.isAtivo()) {            		
             		request.getSession().setAttribute("user", user.getLogin());
             		request.getSession().setAttribute("numContato", this.contatoBusiness.conut());
+            		request.getSession().setAttribute("numMedico", this.medicoBusiness.count());
             		RequestDispatcher rd = request.getRequestDispatcher(Constantes.HOME);
             		
             		rd.forward(request, response);

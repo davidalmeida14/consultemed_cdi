@@ -144,7 +144,8 @@ public class UsuarioController extends HttpServlet {
 		
 		String nome = request.getParameter("nome");
 		String login = request.getParameter("login");
-		String senha = request.getParameter(Criptografia.criptografar("senha"));
+		String senha = request.getParameter("senha");
+		senha = Criptografia.criptografar(senha);
 		String telefone = request.getParameter("telefone");
 		String email = request.getParameter("email");
 		String id = request.getParameter("id");
