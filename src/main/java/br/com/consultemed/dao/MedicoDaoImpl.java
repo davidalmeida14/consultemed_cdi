@@ -6,19 +6,20 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import br.com.consultemed.model.Medico;
 import br.com.consultemed.utils.JPAUtils;
 
-public class MedicoDaoImpl implements IMedicoDao{
+public class MedicoDaoImpl implements IMedicoDao {
 
 	EntityManagerFactory emf = JPAUtils.getEntityManagerFactory();
 	EntityManager factory = null;
-	
+
 	@Override
-	public void save(Medico medico)  {
-		
+	public void save(Medico medico) {
+
 		this.factory = emf.createEntityManager();
 
 		try {
@@ -33,15 +34,15 @@ public class MedicoDaoImpl implements IMedicoDao{
 		} catch (Exception e) {
 			e.getMessage();
 			this.factory.getTransaction().rollback();
-			
+
 		} finally {
 			factory.close();
 		}
-		
+
 	}
 
 	@Override
-	public Medico findById(Long id)  {
+	public Medico findById(Long id) {
 		this.factory = emf.createEntityManager();
 		Medico medico = new Medico();
 		try {
@@ -58,8 +59,8 @@ public class MedicoDaoImpl implements IMedicoDao{
 	}
 
 	@Override
-	public void deleteById(Long id)  {
-		
+	public void deleteById(Long id) {
+
 		this.factory = emf.createEntityManager();
 		Medico medico = new Medico();
 
@@ -76,12 +77,12 @@ public class MedicoDaoImpl implements IMedicoDao{
 		} finally {
 			factory.close();
 		}
-		
+
 	}
 
 	@Override
-	public void update(Medico medico)  {
-		
+	public void update(Medico medico) {
+
 		this.factory = emf.createEntityManager();
 
 		try {
@@ -95,11 +96,11 @@ public class MedicoDaoImpl implements IMedicoDao{
 		} finally {
 			factory.close();
 		}
-		
+
 	}
 
 	@Override
-	public Collection<Medico> listAll()  {
+	public Collection<Medico> listAll() {
 		this.factory = emf.createEntityManager();
 		List<Medico> medicos = new ArrayList<Medico>();
 		try {
@@ -117,17 +118,16 @@ public class MedicoDaoImpl implements IMedicoDao{
 
 		return medicos;
 	}
-	
-	
-	public int countMedico()  {
-		
+
+	public int countMedico() {
+
 		this.factory = emf.createEntityManager();
 		int numMedico = 0;
-		
+
 		try {
 			factory.getTransaction().begin();
-			numMedico = ((Number)this.factory.createNamedQuery("Medico.findAllCount").getSingleResult()).intValue();
-		    System.out.println(numMedico);
+			numMedico = ((Number) this.factory.createNamedQuery("Medico.findAllCount").getSingleResult()).intValue();
+			System.out.println(numMedico);
 			factory.getTransaction().commit();
 
 		} catch (Exception e) {
@@ -138,6 +138,28 @@ public class MedicoDaoImpl implements IMedicoDao{
 		}
 
 		return numMedico;
+	}
+
+	public Medico buscarPorNome(String nome) {
+
+		this.factory = emf.createEntityManager();
+		Medico medico = new Medico();
+		String query = "SELECT m FROM Medico m WHERE m.nome like :nome ";
+		try {
+			factory.getTransaction().begin();
+			Query q = this.factory.createQuery(query);
+			q.setParameter("nome", nome);
+			medico = (Medico) q.getSingleResult();
+			factory.getTransaction().commit();
+
+		} catch (Exception e) {
+			e.getMessage();
+			this.factory.getTransaction().rollback();
+		} finally {
+			factory.close();
+		}
+
+		return medico;
 	}
 
 }

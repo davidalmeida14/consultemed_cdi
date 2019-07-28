@@ -41,8 +41,7 @@ public class MedicoBusiness implements IMedico<Medico>{
 
 	@Override
 	public Medico buscaPorNome(String nome) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.medicoDao.buscarPorNome(nome);
 	}
 
 	@Override

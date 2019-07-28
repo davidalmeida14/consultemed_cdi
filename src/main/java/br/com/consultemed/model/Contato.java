@@ -4,6 +4,8 @@
 package br.com.consultemed.model;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -30,6 +32,18 @@ public class Contato extends AbstractEntity<Long> {
 	
 	public Contato() {
 
+	}
+	
+	@ManyToOne()
+	@JoinColumn(name = "Id_Paciente")
+	private Paciente paciente;
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 
 	public String getNome() {

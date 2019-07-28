@@ -27,15 +27,20 @@ public class Constantes {
 	public static final String USUÁRIO_ESTÁ_ATIVADO = " Usuário está ativado";
 	
 	//MENSAGENS DA TELA CONTATO
-	public static final String CONTATO = "contato";
+	public static final String CONTATO = "Contato";
 	public static final String CONTATO_SUCESSO = " cadastrado com sucesso";
 	public static final String CONTATO_REMOVIDO = "  removido com sucesso";
 	public static final String CONTATO_EDITADO = "  alterado com sucesso";
 	
-	public static final String MEDICO = "medico";
+	public static final String MEDICO = "Médico";
 	public static final String MEDICO_SUCESSO = " cadastrado com sucesso";
 	public static final String MEDICO_REMOVIDO = "  removido com sucesso";
 	public static final String MEDICO_EDITADO = "  alterado com sucesso";
+	
+	public static final String AGENDAMENTO = "Agendamento";
+	public static final String AGENDAMENTO_SUCESSO = " cadastrado com sucesso";
+	public static final String AGENDAMENTO_REMOVIDO = "  removido com sucesso";
+	public static final String AGENDAMENTO_EDITADO = "  alterado com sucesso";
 	
 	//MENSAGENS DA TELA USUARIO
 	public static final String USUARIO = " usuário";
@@ -59,6 +64,9 @@ public class Constantes {
 	
 	public static final String MEDICOS = "/admin/pages/medicos/list_medicos.jsp";
 	public static final String ADD_MEDICOS = "/admin/pages/medicos/add_medicos.jsp";
+	
+	public static final String AGENDAMENTOS = "/admin/pages/agendamentos/list_agendamentos.jsp";
+	public static final String ADD_AGENDAMENTOS = "/admin/pages/agendamentos/add_agendamentos.jsp";
 	
 	public static final String LOGIN = "/admin/pages/login/_login.jsp";
 	public static final String HOME = "/admin/dashboard/index.jsp";

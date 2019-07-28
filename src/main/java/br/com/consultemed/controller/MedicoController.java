@@ -2,7 +2,6 @@ package br.com.consultemed.controller;
 
 import java.io.IOException;
 import java.util.Collection;
-import java.util.Objects;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.consultemed.model.Contato;
 import br.com.consultemed.model.Medico;
 import br.com.consultemed.service.MedicoBusiness;
 import br.com.consultemed.utils.Constantes;
